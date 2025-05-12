@@ -6,12 +6,17 @@ import 'package:meals_app/data/dummy_data.dart';
 import 'package:meals_app/models/meal.dart';
 
 class CategoriesScreen extends StatelessWidget {
-  const CategoriesScreen({super.key, required this.onToggleFavourites});
+  const CategoriesScreen({
+    super.key,
+    required this.onToggleFavourites,
+    required this.availableMeals,
+  });
   final void Function(Meal meal) onToggleFavourites;
+  final List<Meal> availableMeals;
 
   void _selectCategoy(BuildContext context, Category category) {
     final filterdMeals =
-        dummyMeals
+        availableMeals
             .where((meal) => meal.categories.contains(category.id))
             .toList();
     Navigator.of(context).push(
@@ -29,6 +34,7 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // print('Length of Available Meals: ${availableMeals.length}');
     return GridView(
       padding: const EdgeInsets.all(20),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
