@@ -37,6 +37,8 @@ dependencies:
   google_fonts: ^8.1.0
   flutter_riverpod: ^3.3.1
   transparent_image: ^2.0.1
+  rename: ^3.1.0
+  flutter_launcher_icons: ^0.14.4
 
 dev_dependencies:
   flutter_test:
@@ -53,7 +55,14 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
+
+flutter_launcher_icons:
+  android: true
+  image_path: "assets/Icon/app_icon.png"
+
 flutter:
+
+
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
@@ -61,7 +70,7 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/category_exotic.jpg
+    - assets/Icon/app_icon.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
