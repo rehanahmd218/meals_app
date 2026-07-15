@@ -7,7 +7,6 @@ class MainDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Drawer(
       width: MediaQuery.of(context).size.width * 0.7,
       child: Column(

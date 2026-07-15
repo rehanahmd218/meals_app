@@ -24,14 +24,21 @@ class _TabsScreenState extends State<TabsScreen> {
   Map<Filter, bool> _selectedFilters = kInitialFilters;
   List<Meal> availableMeals = dummyMeals;
   final List<Meal> favouriteMeals = [];
+
   void _selectPage(int index) {
     setState(() {
       _selectedPageIndex = index;
     });
   }
 
+  bool isDrawerPresent(BuildContext context) {
+    final scaffoldState = Scaffold.maybeOf(context);
+    return scaffoldState?.hasDrawer ?? false;
+  }
+
   void _selectScreen() async {
-    Navigator.of(context).pop();
+    Navigator.of(context).pop(); // Close the drawer if it's open
+
     final result = await Navigator.of(context).push<Map<Filter, bool>>(
       MaterialPageRoute(
         builder: (context) {
@@ -74,6 +81,7 @@ class _TabsScreenState extends State<TabsScreen> {
           if (_selectedFilters[Filter.glutenFree]! && !meal.isGlutenFree) {
             return false;
           }
+
           if (_selectedFilters[Filter.lactoseFree]! && !meal.isLactoseFree) {
             return false;
           }
@@ -85,7 +93,9 @@ class _TabsScreenState extends State<TabsScreen> {
           }
           return true;
         }).toList();
+
     print('Length of Available Meals: ${availableMeals.length}');
+
     if (_selectedPageIndex == 1) {
       activeTitle = 'Your Favourites';
       activePage = MealsScreen(
@@ -99,10 +109,17 @@ class _TabsScreenState extends State<TabsScreen> {
         availableMeals: availableMeals,
       );
     }
+
     return Scaffold(
       appBar: AppBar(title: Text(activeTitle)),
+
       drawer: MainDrawer(onSelectScreen: _selectScreen),
       body: activePage,
+      floatingActionButton: FloatingActionButton(
+        onPressed: _selectScreen,
+
+        child: Icon(Icons.filter_alt),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
         currentIndex: _selectedPageIndex,

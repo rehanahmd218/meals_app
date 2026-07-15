@@ -13,6 +13,7 @@ class MealsScreen extends StatelessWidget {
     required this.meals,
     required this.onToggleFavourites,
   });
+
   void _selectMeal(BuildContext context, Meal meal) {
     Navigator.of(context).push(
       MaterialPageRoute(
