@@ -7,7 +7,11 @@ Nosh is a beautiful, modern Flutter application that simplifies your daily meal 
 
 ## 🎥 Video Demo
 
-*(Upload your video demo here)*
+
+
+https://github.com/user-attachments/assets/6b761c1c-dc8c-4018-934c-ff9b9b0688ff
+
+
 
 ## 🌟 Key Features
 
